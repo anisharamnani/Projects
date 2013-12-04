@@ -1,4 +1,5 @@
 require 'debugger'
+require 'time'
 
 class Business_Hours 
 	attr_accessor :time, :open, :close, :hours 
@@ -14,9 +15,9 @@ class Business_Hours
 
 	end 
 
-	#write a method that makes string values into days 
-	def date_to_day 
-	end 
+	# write a method that makes string values into days 
+	# def date_to_day 
+	# end 
 
 	def update_all
 		hours.each_pair {|day, times| times[:open] = @open}
@@ -36,11 +37,8 @@ class Business_Hours
 	end 
 
 
-	def closed 
-		
-	end 
-
-	def calculate_deadline time_interval, day
+	def calculate_deadline date, deadline
+		deadline_time = Time.parse(date) + (deadline)
 	end 
 
 end
