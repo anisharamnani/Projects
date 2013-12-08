@@ -1,6 +1,6 @@
-require 'gosu'
+require  'gosu'
 
-class GameWindow < Gosi::GameWindow
+class GameWindow < Gosu::GameWindow
 	def initialize 
 	end 
 

@@ -1,4 +1,4 @@
-# regression test: any time you make a mistake. you add a test to see that it doesn't happen again. 
+	# regression test: any time you make a mistake. you add a test to see that it doesn't happen again. 
 # the cell knows how to count his neighbors
 # the world knows how to kill the cells 
 
@@ -31,8 +31,8 @@ class Cell
 			if self.x == cell.x && self.y == (cell.y -1)
 				@neighbours << cell 
 			end 
-
 		end 
+
 
 		# has a cell to the north east 
 		if self.x == (cell.x-1) && self.y = (cell.y)
@@ -40,9 +40,10 @@ class Cell
 		end 
 
 		#has a cell to the north east
-		if self.x == (cell.x -1) && 
-		#has a cell to the west =] 
+		if self.x == (cell.x -1) 
+			#has a cell to the west =] 
 		@neighbours
+		end 
 	end 
 
 	def spawn_at x, y 
