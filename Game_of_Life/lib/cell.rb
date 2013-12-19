@@ -3,7 +3,7 @@ require 'debugger'
 
 class Cell 
 	attr_reader :x, :y
-	attr_accessor :state, :world, :cells
+	attr_accessor :state, :world, :cells, :new_state 
 
 	def initialize (world, x=0, y=0, state="dead")
 		@x = x 
@@ -49,16 +49,19 @@ class Cell
 	def alive_neighbours
 		count = 0 
 		find_neighbours.each {|neighbour| count += 1 if neighbour.alive?}
-		# debugger 
 		count 
 	end 
 
 	def change_state 
 		if alive?
-			die! if alive_neighbours < 2 || alive_nieghbours > 3
+			die! if alive_neighbours < 2 || alive_neighbours > 3
 		else 
 			alive! if alive_neighbours == 3
 		end 
 	end 
+
+	def transition_state #method for the transtition and then we will se it to the new state
+	end 
+	
 end 
 

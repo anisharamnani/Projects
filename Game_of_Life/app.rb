@@ -1,15 +1,15 @@
-require  'gosu'
+# require  'gosu'
 
-class GameWindow < Gosu::GameWindow
-	def initialize 
-	end 
+# class GameWindow < Gosu::GameWindow
+# 	def initialize 
+# 	end 
 
-	def update 
-	end 
+# 	def update 
+# 	end 
 
-	def draw 
-	end 
-end 
+# 	def draw 
+# 	end 
+# end 
 
-window = GameWindow.new
-window.show
+# window = GameWindow.new
+# window.show

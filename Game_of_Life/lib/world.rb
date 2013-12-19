@@ -5,22 +5,26 @@ class World
 	attr_reader :x, :y
 	def initialize (x,y)
 		@cells = [] 
+		@board = []
 		@x = x 
 		@y = y 
 	end 
 
-	def populate 
+	def populate_random 
 		# how do you hard code the board 
 		x.times do |i|
+			@board << []
 			y.times do |j|
-				Cell.new(self, i, j)
-				r = rand(1..5)
-				r < 3 ? cell.state = "alive" : state = "dead"
+				r < 3 ? state = "alive" : state = "dead"
+				@board[i] << Cell.new(self, i, j, state)
 			end 
 		end 
 	end 
 
-
+	
 end 
 
+
+# r = rand(1..5)
+# 
 
