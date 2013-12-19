@@ -58,12 +58,25 @@ class Business_Hours
 	def open? day, time 
 		open = army_time(hours[day.to_sym][:open])
 		close = army_time(hours[day.to_sym][:close])
-		week_array = 
+		# week_array = I don't remember why this is necessary 
 
 		if hours[day.to_sym][:opened] && open < time && close > time 
 			return true 
 		else 
-			hash.keys.index{||}
+			# maybe iterating through the arrayed hash should be it's own method.
+			# change the hash into an array 
+			# put the next value of the hash hash.keys.index{|i+1| return i}
+			# once i find the next open day, i want to exit the program.
+			# while next_day == true
+			# 	if the next day opened = true 
+			# 		return the open time 
+			# 		next_day = false 
+			# 	else 
+			#
+			# 		next_day = true
+			# 	end 
+			# end  
+
 		end 
 
 	end

@@ -3,14 +3,14 @@ require 'debugger'
 
 class Cell 
 	attr_reader :x, :y
-	attr_accessor :state, :world, :cells, :new_state 
+	attr_accessor :state, :world, :new_state 
 
-	def initialize (world, x=0, y=0, state="dead")
+	def initialize (world, x=0, y=0, state)
 		@x = x 
 		@y = y 
 		@state = state
 		@world = world
-		@world.cells << self
+		@world.board[x][y] = self
 	end 
 
 	def alive? 
@@ -18,30 +18,32 @@ class Cell
 	end 
 
 	def live!
-		self.state = "alive"
+		self.new_state = "alive"
 	end 
 
 	def die! 
-		self.state = "dead"
+		self.new_state = "dead"
 	end 
 
 
 	def find_neighbours
 		neighbours = []
-		world.cells.each do |cell|
-			x_more = self.x + 1 
-			x_less = self.x - 1
-			y_more = self.y + 1 
-			y_less = self.y - 1 
+		world.board.each do |array|
+			array.each do |cell|
+				x_more = self.x + 1 
+				x_less = self.x - 1
+				y_more = self.y + 1 
+				y_less = self.y - 1 
 
-			neighbours << cell if cell.x == x_less && cell.y == y_more #(-1,1)
-			neighbours << cell if cell.x == self.x && cell.y == y_more #(0,1)
-			neighbours << cell if cell.x == x_more && cell.y == y_more #(1,1)
-			neighbours << cell if cell.x == x_less && cell.y == self.y #(-1,0)
-			neighbours << cell if cell.x == x_more && cell.y == self.y #(1,0)
-			neighbours << cell if cell.x == x_less && cell.y == y_less #(-1,-1)
-			neighbours << cell if cell.x == self.x && cell.y == y_less #(0, -1)
-			neighbours << cell if cell.x == x_more && cell.y == y_less #(1, -1) 
+				neighbours << cell if cell.x == x_less && cell.y == y_more #(-1,1)
+				neighbours << cell if cell.x == self.x && cell.y == y_more #(0,1)
+				neighbours << cell if cell.x == x_more && cell.y == y_more #(1,1)
+				neighbours << cell if cell.x == x_less && cell.y == self.y #(-1,0)
+				neighbours << cell if cell.x == x_more && cell.y == self.y #(1,0)
+				neighbours << cell if cell.x == x_less && cell.y == y_less #(-1,-1)
+				neighbours << cell if cell.x == self.x && cell.y == y_less #(0, -1)
+				neighbours << cell if cell.x == x_more && cell.y == y_less #(1, -1) 
+			end
 		end 
 		neighbours.compact 
 	end 
@@ -56,12 +58,13 @@ class Cell
 		if alive?
 			die! if alive_neighbours < 2 || alive_neighbours > 3
 		else 
-			alive! if alive_neighbours == 3
+			live! if alive_neighbours == 3
 		end 
 	end 
 
-	def transition_state #method for the transtition and then we will se it to the new state
-	end 
+	def transition_state
+		self.state = self.new_state 
+	end
 	
 end 
 

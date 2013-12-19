@@ -1,15 +1,8 @@
-# require  'gosu'
+require './lib/world'
 
-# class GameWindow < Gosu::GameWindow
-# 	def initialize 
-# 	end 
-
-# 	def update 
-# 	end 
-
-# 	def draw 
-# 	end 
-# end 
-
-# window = GameWindow.new
-# window.show
+world = World.new(30,30)
+world.populate_random
+loop do 
+	world.display
+	world.tick!
+end 
